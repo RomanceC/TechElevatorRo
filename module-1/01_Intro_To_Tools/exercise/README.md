@@ -44,14 +44,15 @@ After completing this exercise, you'll understand:
 
 1. Open a Terminal (Mac) or Windows Terminal Bash (PC) window and navigate to your home directory by using the command `cd ~`.
 2. Open a second Terminal (Mac) or Windows Terminal Bash (PC) window and navigate to the folder containing today's exercise.
-3. In the second window, run the `verify-part-1.sh` script by using the command `sh verify-part-1.sh`. This command runs a script that verifies that you completed each step successfully. Initially, you'll see the following output:
+3. In the second window, run the `verify-part-1.sh` script by using the command `sh verify-part-1.sh`. This command runs a script t
+hat verifies that you completed each step successfully. Initially, you'll see the following output:
 
 ```
 ---- VERIFYING PART 1 ----
 
 ❗️ 1. ~/playground does not exist
 ❗️ 2. ~/playground/usa does not exist
-❗️ 3. ~/playground/canada does not exist
+❗️ 3. ~/playground/canada does not existpdd
 ❗️ 4. ~/playground/usa/ohio does not exist
 ❗️ 5. ~/playground/usa/pennsylvania does not exist
 ❗️ 6. ~/playground/usa/michigan does not exist
