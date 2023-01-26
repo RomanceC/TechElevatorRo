@@ -32,7 +32,14 @@ public class Exercise07_StoreHours {
     isStoreOpen(22) ➔ false
      */
     public boolean isStoreOpen(int currentHour) {
-        return false;
+
+        if (currentHour >= 8 && currentHour < 17) {
+            return true;
+        } else {
+
+            return false;
+        }
+
     }
 
     /*
