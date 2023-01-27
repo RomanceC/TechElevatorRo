@@ -24,9 +24,9 @@ public class Exercise05_Weather {
 	belowFreezing([-7, -3, 19, 35, 30])  → 4
 	belowFreezing([]) → 0
     */
-	public int belowFreezing(int[] dailyHighs) {
-		return 0;
-	}
+    public int belowFreezing(int[] dailyHighs) {
+        return 0;
+    }
 
     /*
     GaleForce also needs to determine the hottest day when given an upcoming forecast.
@@ -43,9 +43,13 @@ public class Exercise05_Weather {
 	hottestDay([55]) → 55
     */
     public int hottestDay(int[] dailyHighs) {
-        return 0;
-    }
 
+        int hot = dailyHighs[0];
+        for (int i = 1; i < dailyHighs.lengh; i++) {
+            if (dailyHighs[i] > hot) {
+                hot = dailyHighs[i];
+            }
+        }
     /*
     GaleForce discovered an equipment malfunction. Every other reading, starting with the first,
     was off by 2 degrees Fahrenheit (°F).
@@ -60,7 +64,5 @@ public class Exercise05_Weather {
     fixTemperatures([-1] → [1]
 	fixTemperatures([]) → []
      */
-    public int[] fixTemperatures(int[] temperatures) {
-        return new int[] {};
-    }
-}
+        public int[] fixTemperatures(int[] temperatures) {
+            return new int[]{};}

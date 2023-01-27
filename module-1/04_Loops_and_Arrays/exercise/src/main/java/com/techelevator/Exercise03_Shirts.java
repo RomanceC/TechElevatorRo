@@ -17,8 +17,10 @@ public class Exercise03_Shirts {
     buildOrder() → ['S', 'S', 'S', 'M', 'M', 'L']
      */
     public char[] buildOrder() {
-        return new char[] {};    
+
+        return new char[]{SMALL_TSHIRT, SMALL_TSHIRT, SMALL_TSHIRT, MEDIUM_TSHIRT, MEDIUM_TSHIRT, LARGE_TSHIRT};
     }
+
 
     /*
     Another customer called in and is hosting a large networking event and
@@ -36,9 +38,11 @@ public class Exercise03_Shirts {
     buildBulkOrder(4) → ['S', 'M', 'L', 'S']
     buildBulkOrder(0) → []
      */
-    public char[] buildBulkOrder(int numberOfShirts) { 
-        return new char[] {};    
-    }
+    public char[] buildBulkOrder(int numberOfShirts) { return new char []{};
+
+
+
+}
 
     /*
     The warehouse is out of small shirts and will only request more when the
@@ -53,7 +57,6 @@ public class Exercise03_Shirts {
     placeRequest(['M', 'M', 'L']) → false
     placeRequest([]) → false
      */
-    public boolean placeRequest(char[] order) {
-        return false; 
-    }
+    public boolean placeRequest(char[] order){return false;}
 }
+

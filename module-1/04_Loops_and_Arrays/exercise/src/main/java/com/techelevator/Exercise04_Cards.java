@@ -28,6 +28,8 @@ public class Exercise04_Cards {
         return "";
     }
 
+
+
     /*
     One of the players feels lucky and discards the first card from their hand.
 
