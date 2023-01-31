@@ -8,8 +8,11 @@ public class Exercises {
 	 helloName("Alice") → "Hello Alice!"
 	 helloName("X") → "Hello X!"
 	 */
-	public String helloName(String name) {
-		return null;
+	public String helloName(String anythingIwant) {
+
+
+		return "Hello " + anythingIwant + "!";
+
 	}
 
 	/*
@@ -20,7 +23,11 @@ public class Exercises {
 	 makeAbba("What", "Up") → "WhatUpUpWhat"
 	 */
 	public String makeAbba(String a, String b) {
-		return null;
+
+
+		return a + b + b + a;
+
+
 	}
 
 	/*
@@ -32,7 +39,9 @@ public class Exercises {
 	 makeTags("cite", "Yay") → "<cite>Yay</cite>"
 	 */
 	public String makeTags(String tag, String word) {
-		return null;
+
+
+		return "<" + tag + ">" + word + "</" + tag + ">";
 	}
 
 	/*
@@ -44,7 +53,12 @@ public class Exercises {
 	 makeOutWord("[[]]", "word") → "[[word]]"
 	 */
 	public String makeOutWord(String out, String word) {
-		return null;
+
+		String makeOutWord = out + word + out;
+		String partOfString = out.substring(0, 2);
+		String secondPart = out.substring(2);
+		return partOfString + word + secondPart;
+
 	}
 
 	/*
@@ -55,7 +69,8 @@ public class Exercises {
 	 extraEnd("Hi") → "HiHiHi"
 	 */
 	public String extraEnd(String str) {
-		return null;
+		String crazy = str.substring(str.length() - 2);
+		return crazy + crazy + crazy;
 	}
 
 	/*
@@ -67,8 +82,14 @@ public class Exercises {
 	 firstTwo("ab") → "ab"
 	 */
 	public String firstTwo(String str) {
-		return null;
+
+		if(str.length() < 2)
+			return str;
+
+		return str.substring(0, 2);
+
 	}
+
 
 	/*
 	 Given a string of even length, return the first half. So the string "WooHoo" yields "Woo".
@@ -77,7 +98,9 @@ public class Exercises {
 	 firstHalf("abcdef") → "abc"
 	 */
 	public String firstHalf(String str) {
-		return null;
+
+		int half = str.length() / 2;
+		return str.substring(0, half);
 	}
 
 	/*
@@ -88,7 +111,9 @@ public class Exercises {
 	 withoutEnd("coding") → "odin"
 	 */
 	public String withoutEnd(String str) {
-		return null;
+
+		int len = str.length();
+		return str.substring(1, len -1);
 	}
 
 	/*
@@ -100,7 +125,14 @@ public class Exercises {
 	 comboString("aaa", "b") → "baaab"
 	 */
 	public String comboString(String a, String b) {
-		return null;
+
+		int crazyA = a.length();
+		int crazyB = b.length();
+
+		if (crazyA > crazyB)
+			return b+a+b;
+		else
+		return a+b+a;
 	}
 
 	/*
@@ -111,7 +143,8 @@ public class Exercises {
 	 nonStart("shotl", "java") → "hotlava"
 	 */
 	public String nonStart(String a, String b) {
-		return null;
+
+		return a.substring(1) + b.substring(1);
 	}
 
 	/*
@@ -122,7 +155,9 @@ public class Exercises {
 	 left2("Hi") → "Hi"
 	 */
 	public String left2(String str) {
-		return null;
+
+
+		return str.substring(2) + str.substring(0, 2);
 	}
 
 	/*
@@ -133,7 +168,9 @@ public class Exercises {
 	 right2("Hi") → "Hi"
 	 */
 	public String right2(String str) {
-		return null;
+
+		return str.substring(str.length() - 2) +
+				str.substring(0, str.length() - 2);
 	}
 
 	/*
@@ -144,8 +181,13 @@ public class Exercises {
 	 theEnd("oh", true) → "o"
 	 */
 	public String theEnd(String str, boolean front) {
-		return null;
+
+		if(front)
+			return str.substring(0,1);
+
+		return str.substring(str.length() - 1);
 	}
+
 
 	/*
 	 Given a string, return a version without both the first and last char of the string. The string
@@ -155,8 +197,12 @@ public class Exercises {
 	 withoutEnd2("ab") → ""
 	 */
 	public String withoutEnd2(String str) {
-		return null;
+		if(str.length() <= 2) {
+			return "";
+		}
+		return str.substring(1,str.length()-1);
 	}
+
 
 	/*
 	 Given a string of even length, return a string made of the middle two chars, so the string "string"
@@ -166,7 +212,8 @@ public class Exercises {
 	 middleTwo("Practice") → "ct"
 	 */
 	public String middleTwo(String str) {
-		return null;
+		int mid = str.length()/2;
+		return str.substring(mid-1,mid+1);
 	}
 
 	/*
@@ -176,7 +223,8 @@ public class Exercises {
 	 endsLy("oddy") → false
 	 */
 	public boolean endsLy(String str) {
-		return false;
+
+		return (str.endsWith("ly"));
 	}
 
 	/*
@@ -187,7 +235,17 @@ public class Exercises {
 	 nTwice("Chocolate", 1) → "Ce"
 	 */
 	public String nTwice(String str, int n) {
-		return null;
+
+		if(str.length() <=2){
+			return 0;
+
+			String last2Char = str.substring(str.length()-2);
+
+			for(int i=0; i < str.length()-2; i++) {
+
+			}
+		}
+		return str.substring(0, n) + str.substring(str.length()-n);
 	}
 
 	/*
@@ -199,6 +257,10 @@ public class Exercises {
 	 twoChar("java", 3) → "ja"
 	 */
 	public String twoChar(String str, int n) {
+
+		string last2Char = str.
+
+
 		return null;
 	}
 
