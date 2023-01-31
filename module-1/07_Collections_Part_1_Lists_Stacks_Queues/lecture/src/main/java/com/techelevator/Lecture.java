@@ -11,15 +11,23 @@ public class Lecture {
 		System.out.println("       LISTS");
 		System.out.println("####################");
 
+		List<String> names = new ArrayList<>();
+		List<Integer>numbers = new ArrayList<>();
+		List<Double> doubles = new ArrayList<>();
+		List<Boolean> booleans = new ArrayList<>();
 
 		System.out.println("####################");
 		System.out.println("Lists are ordered");
 		System.out.println("####################");
 
+		for(int i=0; i <names.size(); i++) {
+			system.out.println(names)
+		}
 
 		System.out.println("####################");
 		System.out.println("Lists allow duplicates");
 		System.out.println("####################");
+
 
 
 		System.out.println("####################");
