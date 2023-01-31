@@ -83,7 +83,7 @@ public class Exercises {
 	 */
 	public String firstTwo(String str) {
 
-		if(str.length() < 2)
+		if (str.length() < 2)
 			return str;
 
 		return str.substring(0, 2);
@@ -113,7 +113,7 @@ public class Exercises {
 	public String withoutEnd(String str) {
 
 		int len = str.length();
-		return str.substring(1, len -1);
+		return str.substring(1, len - 1);
 	}
 
 	/*
@@ -130,9 +130,9 @@ public class Exercises {
 		int crazyB = b.length();
 
 		if (crazyA > crazyB)
-			return b+a+b;
+			return b + a + b;
 		else
-		return a+b+a;
+			return a + b + a;
 	}
 
 	/*
@@ -182,8 +182,8 @@ public class Exercises {
 	 */
 	public String theEnd(String str, boolean front) {
 
-		if(front)
-			return str.substring(0,1);
+		if (front)
+			return str.substring(0, 1);
 
 		return str.substring(str.length() - 1);
 	}
@@ -197,10 +197,10 @@ public class Exercises {
 	 withoutEnd2("ab") → ""
 	 */
 	public String withoutEnd2(String str) {
-		if(str.length() <= 2) {
+		if (str.length() <= 2) {
 			return "";
 		}
-		return str.substring(1,str.length()-1);
+		return str.substring(1, str.length() - 1);
 	}
 
 
@@ -212,8 +212,8 @@ public class Exercises {
 	 middleTwo("Practice") → "ct"
 	 */
 	public String middleTwo(String str) {
-		int mid = str.length()/2;
-		return str.substring(mid-1,mid+1);
+		int mid = str.length() / 2;
+		return str.substring(mid - 1, mid + 1);
 	}
 
 	/*
@@ -236,17 +236,9 @@ public class Exercises {
 	 */
 	public String nTwice(String str, int n) {
 
-		if(str.length() <=2){
-			return 0;
-
-			String last2Char = str.substring(str.length()-2);
-
-			for(int i=0; i < str.length()-2; i++) {
-
-			}
-		}
-		return str.substring(0, n) + str.substring(str.length()-n);
+		return str.substring(0, n) + str.substring(str.length() - n);
 	}
+
 
 	/*
 	 Given a string and an int n, return a string that starts at n and has a length of 2. Note that n may or may not be a valid
@@ -257,9 +249,6 @@ public class Exercises {
 	 twoChar("java", 3) → "ja"
 	 */
 	public String twoChar(String str, int n) {
-
-		string last2Char = str.
-
 
 		return null;
 	}
