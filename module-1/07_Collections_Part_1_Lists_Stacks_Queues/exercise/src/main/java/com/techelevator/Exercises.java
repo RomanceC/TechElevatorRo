@@ -158,8 +158,28 @@ public class Exercises {
      interleaveLists( [1, 2, 5, 8, 10], [4, 5, 6] )  ->  [1, 4, 2, 5, 5, 6, 8, 10]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
+
+		List<Integer> newList = new ArrayList<>();
+
+		int longestListSize = listOne.size();
+		if (listTwo.size() > listOne.size()) {
+			longestListSize = listTwo.size();
+		}
+		for (int i = 0; i < longestListSize; i++) {
+
+			if (listOne.size() > i) {
+
+				Integer elementFromFirstList = listOne.get(i);
+				newList.add(elementFromFirstList);
+			}
+			if (listTwo.size() > i) {
+
+				Integer elementFromSecondList = listTwo.get(i);
+				newList.add(elementFromSecondList);
+
+			}
+		}
+
+		return newList;
 	}
 }
-
-
