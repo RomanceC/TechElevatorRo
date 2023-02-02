@@ -1,11 +1,12 @@
 package com.techelevator;
 
-public class Elevator { private int currentFloor = 1;
+public class Elevator {
+    private int currentFloor = 1;
     private int numberOfFloors;
     private boolean doorOpen;
 
-    public Elevator(int totalNumberOffloors) {
-        this.numberOfFloors = totalNumberOffloors;
+    public Elevator(int totalNumberOfFloors) {
+        this.numberOfFloors = totalNumberOfFloors;
     }
 
     public void openDoor() {
@@ -17,7 +18,7 @@ public class Elevator { private int currentFloor = 1;
     }
 
     public void goUp(int desiredFloor) {
-        if (doorOpen != true){
+        if (doorOpen != true) {
             if (desiredFloor <= numberOfFloors) {
                 if (desiredFloor > currentFloor) {
                     currentFloor = desiredFloor;
@@ -28,25 +29,11 @@ public class Elevator { private int currentFloor = 1;
 
     public void goDown(int desiredFloor) {
         if (doorOpen != true) {
-            if (desiredFloor >=1 ) {
-                if (desiredFloor < currentFloor){
+            if (desiredFloor >= 1) {
+                if (desiredFloor < currentFloor) {
                     currentFloor = desiredFloor;
                 }
             }
         }
     }
-
-    public int getCurrentFloor() {
-        return currentFloor;
-    }
-
-    public int getNumberOfFloors() {
-        return numberOfFloors;
-    }
-
-    public boolean isDoorOpen() {
-        return doorOpen;
-    }
-
 }
-
