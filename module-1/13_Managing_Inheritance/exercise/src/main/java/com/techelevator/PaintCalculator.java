@@ -13,7 +13,7 @@ class PaintCalculator {
     public static void main(String[] args) {
 
         // Step One:
-        //List<Wall> walls = new ArrayList<Wall>();
+        List<Wall> walls = new ArrayList<Wall>();
 
         while (true) {
             System.out.println("[1] Add a wall");
@@ -73,16 +73,17 @@ class PaintCalculator {
 
                 int totalArea = 0;
                 // Step One:
-//                for (int i = 0; i < walls.size(); i++) {
-//                    System.out.println(
-//                            String.format("Wall %d: %s - %d square ft", i + 1,
-//                                    walls.get(i), walls.get(i).getArea()));
-//                    totalArea = totalArea + walls.get(i).getArea();
-//                    colorChoiceAreas.put(walls.get(i).getColor(),
-//                            colorChoiceAreas
-//                                    .getOrDefault(walls.get(i).getColor(), 0)
-//                                    + walls.get(i).getArea());
-//                }
+
+                for (int i = 0; i < walls.size(); i++) {
+                   System.out.println(
+                           String.format("Wall %d: %s - %d square ft", i + 1,
+                                    walls.get(i), walls.get(i).getArea()));
+                    totalArea = totalArea + walls.get(i).getArea();
+                    colorChoiceAreas.put(walls.get(i).getColor(),
+                           colorChoiceAreas
+                                   .getOrDefault(walls.get(i).getColor(), 0)
+                                   + walls.get(i).getArea());
+               }
 
                 System.out.println("===============================");
                 System.out.println("Total Area: " + totalArea + " square feet");
