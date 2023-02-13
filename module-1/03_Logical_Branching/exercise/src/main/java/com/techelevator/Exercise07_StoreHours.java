@@ -56,12 +56,29 @@ public class Exercise07_StoreHours {
     The char for the current day is only uppercase.
 
     Examples:
+    //methodName (parameters) -> value returned
+    // nameOfTheCode (data given to us) -> answer
     isStoreOpen(8, 'M') ➔ true
     isStoreOpen(12, 'W') ➔ true
     isStoreOpen(12, 'S') ➔ false
      */
     public boolean isStoreOpen(int currentHour, char currentDay) {
+        // if the store is open between 8 am (hour 8) and 5 pm (hour 17)
+        //check if the currentHour is between 8am and 5pm             check if the currentDay is Monday or Wednesday or Friday
+
+        if((currentHour >= 8 && currentHour < 17) && (currentDay == 'M' || currentDay == 'W' || currentDay == 'F') ){
+
+            return true;
+         }
+
+
+        //is the store open? true is yes, false is no
         return false;
+
+        // another way to solve
+        //  boolean isCurrentlyOpen = (currentHour >= 8 && currentHour < 17);
+        //   boolean isAMondayWedOrFri = (currentDay == 'M' || currentDay == 'W' || currentDay == 'F');
+        //  if (isCurrentlyOpen && isAMondayWedOrFri)
     }
 
 

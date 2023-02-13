@@ -13,6 +13,8 @@ public class Lecture {
 		System.out.println("####################");
 		System.out.println();
 
+		Map<Ineger, Integer> integerMap = new HashMap<>();
+
 
 	}
 

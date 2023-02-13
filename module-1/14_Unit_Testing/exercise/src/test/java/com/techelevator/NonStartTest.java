@@ -38,14 +38,14 @@ public class NonStartTest {
 
     public void testPartialString2() {
 
-        String a = "Chyna";
-        String b = "Broyles";
+        String a = "Landon";
+        String b = "Moore";
 
         NonStart nonStart = new NonStart();
 
-        String result = nonStart.getPartialString("Chyna", "Broyles");
+        String result = nonStart.getPartialString("Landon", "Moore");
 
-        Assert.assertEquals("hynaroyles", result);
+        Assert.assertEquals("andonoore", result);
     }
 
     @Test

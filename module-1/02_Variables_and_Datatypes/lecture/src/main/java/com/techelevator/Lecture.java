@@ -8,6 +8,8 @@ public class Lecture {
 		1. Create a variable to hold an int and call it numberOfExercises.
 			Then set it to 26.
 		*/
+		int numberOfExercises = 26;
+		System.out.println(numberOfExercises);
 
 		//System.out.println(numberOfExercises);
 

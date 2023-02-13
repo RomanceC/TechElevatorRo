@@ -235,7 +235,7 @@ public class Exercises {
 	 nTwice("Chocolate", 1) → "Ce"
 	 */
 	public String nTwice(String str, int n) {
-
+it
 		return str.substring(0, n) + str.substring(str.length() - n);
 	}
 
