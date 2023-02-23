@@ -2,3 +2,7 @@
 -- Expected answer is around 3,900.
 -- (1 row)
 
+SELECT avg (area) as average_park_area
+FROM park
+WHERE has_camping= 'true';
+
