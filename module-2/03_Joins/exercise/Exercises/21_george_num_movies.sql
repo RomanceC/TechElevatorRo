@@ -9,4 +9,5 @@ on person.person_id = movie_actor.actor_id
 left join movie
 on movie_actor.movie_id = movie.movie_id
 where person_name like 'George %'
-group by person_id;
+group by person_id
+order by person_name;
