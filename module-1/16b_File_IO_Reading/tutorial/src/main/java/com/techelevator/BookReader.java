@@ -27,6 +27,13 @@ public class BookReader {
         /*
         Step 2: Step Two: Open the book file and handle errors
          */
+        File bookFile;(
+        try (Scanner fileInput = new Scanner(bookFile)) {
 
+        }
+        catch (FileNotFoundException e) {
+            system.out.printIn("The file was not found:" + bookFile.getAbsolutePath());
+
+    }
     }
 }

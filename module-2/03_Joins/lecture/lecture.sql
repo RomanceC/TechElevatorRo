@@ -2,12 +2,27 @@
 
 -- Write a query to retrieve the name and state abbreviation for the 2 cities named "Columbus" in the database
 
+Select city_name, state_abbreviation
+FROM city 
+WHERE city_name = 'Columbus';
+
 
 -- Modify the previous query to retrieve the names of the states (rather than their abbreviations).
 
+Select city_name, state_name
+FROM city 
+JOIN state
+ON city.state_abbreviation = STATE.state_abbreviation
+WHERE city_name = 'Columbus';
 
 -- Write a query to retrieve the names of all the national parks with their state abbreviations.
 -- (Some parks will appear more than once in the results, because they cross state boundaries.)
+Select park_name, state_name
+FROM park 
+JOIN park_state
+ON park.park_id = STATE.state_abbreviation
+WHERE city_name = 'Columbus';
+
 
 
 -- The park_state table is an associative table that can be used to connect the park and state tables.
@@ -18,7 +33,14 @@
 
 
 -- Modify the previous query to include the area of each park.
-
+SELECT park_name, state_name, city_name, park.area
+FROM park
+JOIN park_state -- we join to the table we want to include more data from
+	ON park.park_id = park_state.park_id
+JOIN state
+	ON park_state.state_abbreviation = state.state_abbreviation
+JOIN city
+	ON state.capital = city.city_id;
 
 -- Write a query to retrieve the names and populations of all the cities in the Midwest census region.
 
