@@ -63,4 +63,7 @@ public class Employee {
 	public String toString() {
 		return lastName + ", " + firstName;
 	}
+
+    public void add(Employee employee) {
+    }
 }
