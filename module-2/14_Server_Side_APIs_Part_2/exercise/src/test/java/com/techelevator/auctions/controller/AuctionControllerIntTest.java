@@ -49,8 +49,8 @@ public class AuctionControllerIntTest {
                 350.00);
 
         mockMvc.perform(post("/auctions")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(toJson(auction)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(toJson(auction)))
                 .andExpect(status().isCreated());
     }
 
@@ -63,8 +63,8 @@ public class AuctionControllerIntTest {
                 0);
 
         mockMvc.perform(post("/auctions")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(toJson(auction)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(toJson(auction)))
                 .andExpect(status().isBadRequest());
     }
 
@@ -79,8 +79,8 @@ public class AuctionControllerIntTest {
         auction.setTitle("MY_NEW_TITLE");
 
         mockMvc.perform(put("/auctions/" + auction.getId())
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(toJson(auction)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(toJson(auction)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.title").value("MY_NEW_TITLE"));
     }
@@ -108,8 +108,8 @@ public class AuctionControllerIntTest {
                 100.39);
 
         mockMvc.perform(put("/auctions/99")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(toJson(auction)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(toJson(auction)))
                 .andExpect(status().isNotFound());
     }
 
@@ -121,7 +121,7 @@ public class AuctionControllerIntTest {
 
         mockMvc.perform(delete("/auctions/5")).andExpect(status().isNoContent());
         mockMvc.perform(get("/auctions")
-                .accept(MediaType.APPLICATION_JSON))
+                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$", IsCollectionWithSize.hasSize(allAuctions.size()-1)));
     }
 
