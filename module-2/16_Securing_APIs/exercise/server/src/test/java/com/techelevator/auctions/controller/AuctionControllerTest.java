@@ -76,17 +76,17 @@ public class AuctionControllerTest {
         final String adminToken = getTokenForLogin("admin", "admin", mvc);
 
         mvc.perform(post("/auctions")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(toJson(auction))
-                .header("Authorization", "Bearer " + adminToken))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(toJson(auction))
+                        .header("Authorization", "Bearer " + adminToken))
                 .andExpect(status().isCreated());
 
         final String creatorToken = getTokenForLogin("creator", "password", mvc);
 
         mvc.perform(post("/auctions")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(toJson(auction))
-                .header("Authorization", "Bearer " + creatorToken))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(toJson(auction))
+                        .header("Authorization", "Bearer " + creatorToken))
                 .andExpect(status().isCreated());
 
     }
@@ -107,17 +107,17 @@ public class AuctionControllerTest {
         final String adminToken = getTokenForLogin("admin", "admin", mvc);
 
         mvc.perform(put("/auctions/1")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(toJson(auction))
-                .header("Authorization", "Bearer " + adminToken))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(toJson(auction))
+                        .header("Authorization", "Bearer " + adminToken))
                 .andExpect(status().isOk());
 
         final String creatorToken = getTokenForLogin("creator", "password", mvc);
 
         mvc.perform(put("/auctions/1")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(toJson(auction))
-                .header("Authorization", "Bearer " + creatorToken))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(toJson(auction))
+                        .header("Authorization", "Bearer " + creatorToken))
                 .andExpect(status().isOk());
     }
 
@@ -131,15 +131,15 @@ public class AuctionControllerTest {
         final String adminToken = getTokenForLogin("admin", "admin", mvc);
 
         mvc.perform(delete("/auctions/1")
-                .contentType(MediaType.APPLICATION_JSON)
-                .header("Authorization", "Bearer " + adminToken))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .header("Authorization", "Bearer " + adminToken))
                 .andExpect(status().isNoContent());
 
         final String creatorToken = getTokenForLogin("creator", "password", mvc);
 
         mvc.perform(delete("/auctions/2")
-                .contentType(MediaType.APPLICATION_JSON)
-                .header("Authorization", "Bearer " + creatorToken))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .header("Authorization", "Bearer " + creatorToken))
                 .andExpect(status().isForbidden());
     }
 
@@ -148,7 +148,7 @@ public class AuctionControllerTest {
         final String token = getTokenForLogin("user", "password", mvc);
 
         mvc.perform(get("/auctions/whoami")
-                .header("Authorization", "Bearer " + token))
+                        .header("Authorization", "Bearer " + token))
                 .andExpect(status().isOk())
                 .andExpect(content().string("user"));
     }
