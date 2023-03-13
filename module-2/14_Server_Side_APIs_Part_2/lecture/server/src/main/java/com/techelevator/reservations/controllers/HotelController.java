@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class HotelController {
+public class git HotelController {
 
     private HotelDao hotelDao;
     private ReservationDao reservationDao;
