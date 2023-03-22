@@ -1,0 +1,23 @@
+body{
+    
+    background-image: url(https://images.complex.com/complex/images/c_fill,dpr_auto,f_auto,q_90,w_1400/fl_lossy,pg_1/t5itdudlovadciiis6aw/the-story-of-the-black-mafia-family-bmf);
+    background-size: cover;
+   background-attachment: scroll;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left; 
+}
+
+form{
+
+    background-color: rgb(201, 176, 97);
+    color: rgb(12, 11, 11);
+    padding: 10px;  
+    opacity: 0.8;
+
+   
+   }
+   header{
+       padding: 10px;
+       color: rgb(20, 19, 19);
+   }
