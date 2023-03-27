@@ -1,0 +1,27 @@
+/* If we want to select all instances of a particular tag,
+we just put the tag name*/
+
+h1 {
+    text-align: center;
+}
+blockquote{
+    text-align: center;
+}
+
+img {
+    width: 200px;
+    height: 300px;
+}
+
+/* To select something  in a class, put a . in front of the class name */
+
+.movie-poster {
+    width: 225px;
+    display: inline-block;
+}
+
+/* To select something by an id, put a hashtag in front of the id name */
+
+#movie-posters-list {
+    text-align: center;
+}
