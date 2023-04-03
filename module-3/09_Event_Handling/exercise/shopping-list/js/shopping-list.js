@@ -17,7 +17,7 @@ const groceries = [
  * This function will get a reference to the title and set its text to the value
  * of the pageTitle variable that was set above.
  */
-function setPageTitle() {
+ function setPageTitle() {
   const title = document.getElementById('title');
   title.innerText = pageTitle;
 }
@@ -25,7 +25,7 @@ function setPageTitle() {
 /**
  * This function will loop over the array of groceries that was set above and add them to the DOM.
  */
-function displayGroceries() {
+ function displayGroceries() {
   const ul = document.querySelector('ul');
   groceries.forEach((item) => {
     const li = document.createElement('li');
@@ -35,4 +35,60 @@ function displayGroceries() {
     li.appendChild(checkCircle);
     ul.appendChild(li);
   });
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  setPageTitle();
+  displayGroceries();
+
+  const items = document.querySelectorAll('li');
+  items.forEach((item) => {
+    item.addEventListener('click', (event) => {
+      complete(event.target);
+    });
+
+    item.addEventListener('dblclick', (event) => {
+      incomplete(event.target);
+    });
+  });
+
+  const btnToggleAll = document.getElementById('toggleAll');
+  btnToggleAll.addEventListener('click', (event) => {
+    toggleAll(items, event.currentTarget);
+  });
+});
+
+function complete(item) {
+  if (!item.classList.contains('completed')) {
+    item.classList.add('completed');
+    item.querySelector('i').classList.add('completed');
+  }
+}
+
+function incomplete(item) {
+  if (item.classList.contains('completed')) {
+    item.classList.remove('completed');
+    item.querySelector('i').classList.remove('completed');
+  }
+}
+
+function toggleAll(items, btn) {
+  items.forEach((item) => {
+    addRemoveCompleted(item);
+  });
+  allItemsIncomplete = !allItemsIncomplete;
+  allItemsIncomplete == true
+    ? (btn.innerText = 'Mark All Complete')
+    : (btn.innerText = 'Mark All Incomplete');
+}
+
+function addRemoveCompleted(item) {
+  if (allItemsIncomplete) {
+    item.classList.add('completed');
+    item.querySelector('i').classList.add('completed');
+  } else {
+    item.classList.remove('completed');
+    item.querySelector('i').classList.remove('completed');
+  }
 }
