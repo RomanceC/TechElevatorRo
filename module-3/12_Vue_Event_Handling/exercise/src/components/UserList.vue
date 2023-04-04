@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input type="checkbox" id="selectAll" v-on:change="selectAll($event)" v-bind:checked="selectedUserIDs.length === users.length" />
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -33,7 +33,7 @@
             <select id="statusFilter" v-model="filter.status">
               <option value>Show All</option>
               <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
+              <option value="Disabled">Disabled</option>
             </select>
           </td>
           <td>&nbsp;</td>
@@ -41,10 +41,10 @@
         <tr
           v-for="user in filteredList"
           v-bind:key="user.id"
-          v-bind:class="{ deactivated: user.status === 'Inactive' }"
+          v-bind:class="{ disabled: user.status === 'Disabled' }"
         >
           <td>
-            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" />
+            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" v-on:change="selectUser($event)" v-bind:checked="selectedUserIDs.includes(user.id)" />
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -52,47 +52,45 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnActivateDeactivate">Activate or Deactivate</button>
+            <button class="btnEnableDisable" v-on:click="flipStatus(user.id)">{{user.status === 'Disabled' ? 'Enable' : 'Disable'}}</button>
           </td>
         </tr>
       </tbody>
     </table>
-
     <div class="all-actions">
-      <button>Activate Users</button>
-      <button>Deactivate Users</button>
-      <button>Delete Users</button>
+      <button v-on:click="enableSelectedUsers()" v-bind:disabled="actionButtonDisabled">Enable Users</button>
+      <button v-on:click="disableSelectedUsers()" v-bind:disabled="actionButtonDisabled">Disable Users</button>
+      <button v-on:click="deleteSelectedUsers()" v-bind:disabled="actionButtonDisabled">Delete Users</button>
     </div>
-
-    <button>Add New User</button>
-
-    <form id="frmAddNewUser">
+    <button v-on:click.prevent="showForm = !showForm">Add New User</button>
+    <form id="frmAddNewUser" v-show="showForm" v-on:submit.prevent="saveUser()">
       <div class="field">
         <label for="firstName">First Name:</label>
-        <input type="text" name="firstName" />
+        <input type="text" name="firstName" v-model="newUser.firstName"/>
       </div>
       <div class="field">
         <label for="lastName">Last Name:</label>
-        <input type="text" name="lastName" />
+        <input type="text" name="lastName" v-model="newUser.lastName"/>
       </div>
       <div class="field">
         <label for="username">Username:</label>
-        <input type="text" name="username" />
+        <input type="text" name="username" v-model="newUser.username"/>
       </div>
       <div class="field">
         <label for="emailAddress">Email Address:</label>
-        <input type="text" name="emailAddress" />
+        <input type="text" name="emailAddress" v-model="newUser.emailAddress"/>
       </div>
       <button type="submit" class="btn save">Save User</button>
     </form>
   </div>
 </template>
-
 <script>
 export default {
   name: "user-list",
   data() {
     return {
+      showForm: false,
+      selectedUserIDs: [],
       filter: {
         firstName: "",
         lastName: "",
@@ -132,7 +130,7 @@ export default {
           lastName: "Best",
           username: "gbest",
           emailAddress: "gbest@gmail.com",
-          status: "Inactive"
+          status: "Disabled"
         },
         {
           id: 4,
@@ -156,7 +154,7 @@ export default {
           lastName: "Smith",
           username: "msmith",
           emailAddress: "msmith@foo.com",
-          status: "Inactive"
+          status: "Disabled"
         }
       ]
     };
@@ -164,9 +162,79 @@ export default {
   methods: {
     getNextUserId() {
       return this.nextUserId++;
+    },
+    saveUser() {
+      this.newUser.id = this.getNextUserId();
+      this.users.unshift(this.newUser);
+      this.resetForm();
+    },
+    resetForm(){
+      this.newUser = {};
+      this.showForm = false;
+    },
+    flipStatus(id) {
+      const user = this.users.find(
+        (x) => {
+          return x.id === id;
+        }
+      );
+      if(user.status === 'Active') {
+        user.status = 'Disabled';
+      } else {
+        user.status= 'Active';
+      }
+    },
+    enableSelectedUsers(){
+      this.selectedUserIDs.forEach((id) => {
+        this.users[this.findUserById(id)].status = "Active";
+      });
+      this.clearSelectedUsers();
+    },
+    disableSelectedUsers(){
+      this.selectedUserIDs.forEach((id) => {
+        this.users[this.findUserById(id)].status = "Disabled";
+      });
+      this.clearSelectedUsers();
+    },
+    deleteSelectedUsers(){
+      this.selectedUserIDs.forEach((id) => {
+        this.deleteUser(id);
+      });
+      this.clearSelectedUsers;
+    },
+     deleteUser(id){
+      this.users = this.users.filter((user) => {
+        return user.id !== id;
+      });
+    },
+    clearSelectedUsers(){
+      this.selectedUserIDs = [];
+    },
+    findUserById(id){
+      return this.users.findIndex((user) => user.id == id);
+    },
+    selectUser(event){
+      if(event.target.checked){
+        this.selectedUserIDs.push(parseInt(event.target.id));
+      } else{
+        this.selectedUserIDs = this.selectedUserIDs.filter((user) => {
+          return user !== parseInt(event.target.id);
+        });
+      }
+    },
+    selectAll(event){
+      if(event.target.checked){
+        this.selectedUserIDs = [];
+        this.users.forEach((user) => this.selectedUserIDs.push(user.id));
+      } else{
+        this.selectedUserIDs = [];
+      }
     }
   },
   computed: {
+    actionButtonDisabled() {
+      return this.selectedUserIDs.length === 0;
+    },
     filteredList() {
       let filteredUsers = this.users;
       if (this.filter.firstName != "") {
@@ -207,7 +275,6 @@ export default {
   }
 };
 </script>
-
 <style scoped>
 table {
   margin-top: 20px;
@@ -221,14 +288,13 @@ th {
 td {
   padding: 10px;
 }
-tr.deactivated {
+tr.disabled {
   color: red;
 }
 input,
 select {
   font-size: 16px;
 }
-
 form {
   margin: 20px;
   width: 350px;
