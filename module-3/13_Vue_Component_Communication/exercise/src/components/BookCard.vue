@@ -1,15 +1,12 @@
 <template>
   <div class="card">
-
   </div>
 </template>
-
 <script>
 export default {
     name: 'book-card'
 }
 </script>
-
 <style>
 .card {
     border: 2px solid black;
@@ -19,23 +16,18 @@ export default {
     margin: 20px;
     position: relative;
 }
-
 .card.read {
     background-color: lightgray;
 }
-
 .card .book-title {
     font-size: 1.5rem;
 }
-
 .card .book-author {
     font-size: 1rem;
 }
-
 .book-image {
     width: 80%;
 }
-
 .mark-read, .mark-unread {
     display: block;
     position: absolute;
