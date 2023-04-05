@@ -33,7 +33,7 @@
             <select id="statusFilter" v-model="filter.status">
               <option value>Show All</option>
               <option value="Active">Active</option>
-              <option value="Disabled">Disabled</option>
+              <option value="Inactive">Inactive</option>
             </select>
           </td>
           <td>&nbsp;</td>
@@ -41,7 +41,7 @@
         <tr
           v-for="user in filteredList"
           v-bind:key="user.id"
-          v-bind:class="{ disabled: user.status === 'Disabled' }"
+          v-bind:class="{ deactivated: user.status === 'Inactive' }"
         >
           <td>
             <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" v-on:change="selectUser($event)" v-bind:checked="selectedUserIDs.includes(user.id)" />
@@ -52,18 +52,18 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnEnableDisable" v-on:click="flipStatus(user.id)">{{user.status === 'Disabled' ? 'Enable' : 'Disable'}}</button>
+            <button class="btnActivateDeactivate" v-on:click="toggleStatus(user.id)">{{user.status === 'Active' ? 'Deactivate' : 'Activate'}}</button>
           </td>
         </tr>
       </tbody>
     </table>
     <div class="all-actions">
-      <button v-on:click="enableSelectedUsers()" v-bind:disabled="actionButtonDisabled">Enable Users</button>
-      <button v-on:click="disableSelectedUsers()" v-bind:disabled="actionButtonDisabled">Disable Users</button>
-      <button v-on:click="deleteSelectedUsers()" v-bind:disabled="actionButtonDisabled">Delete Users</button>
+      <button v-on:click="activateUsers()" v-bind:disabled="actionButtonDisabled">Activate Users</button>
+      <button v-on:click="deactivateUsers()" v-bind:disabled="actionButtonDisabled">Deactivate Users</button>
+      <button v-on:click="deleteUsers()" v-bind:disabled="actionButtonDisabled">Delete Users</button>
     </div>
     <button v-on:click.prevent="showForm = !showForm">Add New User</button>
-    <form id="frmAddNewUser" v-show="showForm" v-on:submit.prevent="saveUser()">
+    <form id="frmAddNewUser" v-show="showForm" v-on:submit.prevent="addNewUser()">
       <div class="field">
         <label for="firstName">First Name:</label>
         <input type="text" name="firstName" v-model="newUser.firstName"/>
@@ -130,7 +130,7 @@ export default {
           lastName: "Best",
           username: "gbest",
           emailAddress: "gbest@gmail.com",
-          status: "Disabled"
+          status: "Inactive"
         },
         {
           id: 4,
@@ -154,7 +154,7 @@ export default {
           lastName: "Smith",
           username: "msmith",
           emailAddress: "msmith@foo.com",
-          status: "Disabled"
+          status: "Inactive"
         }
       ]
     };
@@ -163,7 +163,7 @@ export default {
     getNextUserId() {
       return this.nextUserId++;
     },
-    saveUser() {
+    addNewUser() {
       this.newUser.id = this.getNextUserId();
       this.users.unshift(this.newUser);
       this.resetForm();
@@ -172,33 +172,33 @@ export default {
       this.newUser = {};
       this.showForm = false;
     },
-    flipStatus(id) {
+    toggleStatus(id) {
       const user = this.users.find(
         (x) => {
           return x.id === id;
         }
       );
       if(user.status === 'Active') {
-        user.status = 'Disabled';
+        user.status = 'Inactive';
       } else {
         user.status= 'Active';
       }
     },
-    enableSelectedUsers(){
+    activateUsers(){
       this.selectedUserIDs.forEach((id) => {
-        this.users[this.findUserById(id)].status = "Active";
+      this.users[this.findUserById(id)].status = "Active";
       });
       this.clearSelectedUsers();
     },
-    disableSelectedUsers(){
+    deactivateUsers(){
       this.selectedUserIDs.forEach((id) => {
-        this.users[this.findUserById(id)].status = "Disabled";
+      this.users[this.findUserById(id)].status = "Inactive";
       });
       this.clearSelectedUsers();
     },
-    deleteSelectedUsers(){
+    deleteUsers(){
       this.selectedUserIDs.forEach((id) => {
-        this.deleteUser(id);
+      this.deleteUser(id);
       });
       this.clearSelectedUsers;
     },
