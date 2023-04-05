@@ -1,12 +1,10 @@
 <template>
-  <div>
-      <form class="new-book-form" v-on:submit.prevent='saveBook'>
-          <input type="text" class='title-input' v-model="book.title"/>
-          <input type="text" class='author-input' v-model="book.author"/>
-          <input type="text" class='isbn-input' v-model="book.isbn"/> 
-          <button>save</button>
-      </form>
-  </div>
+  <form class="new-book-form" v-on:submit.prevent="ADD_BOOK">
+    <input class="title-input" type="text" placeholder="Title" v-model="book.title" />
+    <input class="author-input" type="text" placeholder="Author" v-model="book.author" />
+    <input class="isbn-input" type="text" placeholder="ISBN" v-model="book.isbn" />
+    <button>Save</button>
+  </form>
 </template>
 
 <script>
@@ -23,8 +21,8 @@ export default {
         }
     },
     methods: {
-        saveBook() {
-            this.$store.commit('ADD_NEW_BOOK', this.book);
+        ADD_BOOK() {
+            this.$store.commit('ADD_BOOK', this.book);
             this.book = {
                 title: '',
                 author: '',
@@ -35,5 +33,13 @@ export default {
     }
 }
 </script>
+
 <style>
+.new-book-form {
+    margin: 20px;
+}
+.new-book-form input, .new-book-form button {
+    margin: 10px;
+    font-size: 1rem;
+}
 </style>
