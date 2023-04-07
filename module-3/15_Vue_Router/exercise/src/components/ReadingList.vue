@@ -1,24 +1,40 @@
-<template>
-  <div class="book-container">
-    <book-card v-bind:book="book" v-for="book in $store.state.books" v-bind:key="book.isbn" />
-  </div>
-</template>
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
+import MyBooks from '../views/MyBooks.vue';
+import NewBook from '../views/NewBook.vue';
+import BookDetail from '../views/BookDetail';
+Vue.use(VueRouter);
 
-<script>
-import BookCard from '../components/BookCard.vue';
-
-export default {
-    name: 'reading-list',
-    components: {
-        BookCard
+const routes = [
+  {
+    path: '/',
+    component: Home,
+    name: 'Home'
+  },
+  
+    {
+      path: '/myBooks',
+      component: MyBooks,
+      name: 'MyBooks'
+    },
+    {
+      path: '/addBook',
+      component: NewBook,
+      name: 'NewBook'
+    },
+    {
+      path: '/book/:id',
+      name: 'book',
+      component: BookDetail
     }
-}
-</script>
+];
 
-<style>
-.book-container {
-    display:flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-</style>
+const router = new VueRouter({
+  mode: 'history',
+  routes
+});
+
+
+
+export default router;
